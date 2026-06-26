@@ -1,3 +1,5 @@
+# Salvage GPS Fix
+
 Tired of accepting multiple salvage contracts and ending up with a pile of identical “Salvage Site” GPS markers?
 
 This mod replaces the default salvage contract GPS clutter with normal, player-style GPS markers that are much easier to manage.
