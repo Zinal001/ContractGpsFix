@@ -4,6 +4,7 @@ using VRage.Game.Components;
 using VRage.Game.ModAPI;
 using System.Collections.Generic;
 using System.Linq;
+using VRageMath;
 
 namespace ContractGpsFix
 {
@@ -252,13 +253,15 @@ namespace ContractGpsFix
 
             var customName = _Config.NamingScheme == NamingScheme.Letter
                 ? $"Salvage Site {(char)playerState.CurrentCharacterId}"
-                : $"Salvage Site {playerState.CurrentCharacterId - 'A'}";
+                : $"Salvage Site {playerState.CurrentCharacterId - 'A' + 1}";
 
             var newGps = MyAPIGateway.Session.GPS.Create(
                 customName,
                 sourceGps.Description,
                 sourceGps.Coords,
                 true);
+
+            newGps.GPSColor = ColorExtensions.FromHtml(_Config.MarkerColor) ?? Color.Orange;
 
             MyAPIGateway.Session.GPS.AddGps(identityId, newGps);
 
